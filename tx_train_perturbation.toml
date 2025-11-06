@@ -1,0 +1,15 @@
+# Dataset paths - maps dataset names to their directories
+[datasets]
+replogle_h1 = "/home/lurui/state/TFAM_cell_set.h5ad"
+
+# Training specifications
+# All cell types in a dataset automatically go into training (excluding zeroshot/fewshot overrides)
+[training]
+replogle_h1 = "train"
+
+# Zeroshot specifications - entire cell types go to val or test
+[zeroshot]
+
+# Fewshot specifications - explicit perturbation lists
+[fewshot."replogle_h1.k562"]
+test = ["TFAM"]

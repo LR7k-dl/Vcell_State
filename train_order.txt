@@ -1,0 +1,23 @@
+python -m state tx train \
+    data.kwargs.toml_config_path="tx_train_cellline.toml" \
+    data.kwargs.num_workers=8 \
+    +data.kwargs.persistent_workers=false \
+    data.kwargs.pin_memory=false \
+    data.kwargs.batch_col="batch_var" \
+    data.kwargs.pert_col="target_gene" \
+    data.kwargs.cell_type_key="cell_type" \
+    data.kwargs.control_pert="non-targeting" \
+    data.kwargs.perturbation_features_file="ESM2_pert_features.pt" \
+    training.max_steps=500 \
+    training.val_freq=10 \
+    training.ckpt_every_n_steps=20000 \
+    model.kwargs.batch_encoder=false \
+    model=state \
+    model.kwargs.loss=energy \
+    wandb.tags=first_run \
+    output_dir="tx_train_experiment" \
+    name="cellline_10.28.1" \
+    +callbacks.early_stopping.enable=true \
+    +training.monitor="val_pr_auc" \
+    +training.early_stopping_mode="max" \
+    +training.early_stopping_patience=15

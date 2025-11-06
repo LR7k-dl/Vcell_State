@@ -1,0 +1,17 @@
+# Dataset paths - maps dataset names to their directories
+[datasets]
+train_data = "{filtered_h1.h5ad,filtered_hepg2.h5ad,filtered_jurkat.h5ad,filtered_k562_gwps.h5ad,filtered_k562.h5ad,filtered_rpe1.h5ad}"
+
+# Training specifications
+# All cell types in a dataset automatically go into training (excluding zeroshot/fewshot overrides)
+[training]
+train_data = "train"
+
+# Zeroshot specifications - entire cell types go to val or test
+[zeroshot]
+"train_data.rpe1" = "test"
+"train_data.jurkat" = "val"
+
+
+# Fewshot specifications - explicit perturbation lists
+[fewshot]
